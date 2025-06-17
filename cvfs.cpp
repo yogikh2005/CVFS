@@ -5,12 +5,12 @@
 #include<iostream>
 #include<io.h>
 
-#define MAXINODE 5
+#define MAXINODE 10
 
 #define READ 1
 #define WRITE 2
 
-#define MAXFILESIZE 2048
+#define MAXFILESIZE 1024
 
 #define REGULAR 1
 #define SPECIAL 2
