@@ -5,7 +5,7 @@
 #include<iostream>
 #include<io.h>
 
-#define MAXINODE 10
+#define MAXINODE 5
 
 #define READ 1
 #define WRITE 2
@@ -142,6 +142,8 @@ void DisplayHelp()
   printf("fstat: To Display information of file using file discriptor\n");
   printf("truncate: To Remove all data from file\n");
   printf("rm: To Delet the file\n");
+  printf("create: To create new file\n");
+  printf("man: To give info about command\n");
 }
 
 int GetFDFromName(char *name)
@@ -312,7 +314,7 @@ int ReadFile(int fd,char *arr,int iSize)
 
 	if(UFDTArr[fd].ptrfiletable->ptrinode->FileType!=REGULAR) return -4;
 	
-	read_size==(UFDTArr[fd].ptrfiletable->ptrinode->FileActualSize)-(UFDTArr[fd].ptrfiletable->readoffset);
+	read_size=(UFDTArr[fd].ptrfiletable->ptrinode->FileActualSize)-(UFDTArr[fd].ptrfiletable->readoffset);
 	
 	if(read_size<iSize)
 	{
@@ -607,7 +609,7 @@ int main()
 		fflush(stdin);
 		strcpy(str,"");
 		
-		printf("YOGI VFS:>");
+		printf("\nYOGI VFS:>");
 		
 		fgets(str,80,stdin);
 		
@@ -638,7 +640,7 @@ int main()
 			}
 			else if(strcmp(command[0],"exit")==0)
 			{
-				printf(" Terminate the YOGi Virtual File System\n");
+				printf(" Terminate the YOGI Virtual File System\n");
 				break;
 			}
 			else
@@ -730,7 +732,7 @@ int main()
 		}
 		else if(count==3)
 		{
-			if(strcmp(command[0],"creat")==0)
+			if(strcmp(command[0],"create")==0)
 			{
 				ret=Createfile(command[1],atoi(command[2]));
 				
